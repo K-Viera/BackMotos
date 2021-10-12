@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
-require("dotenv").config;
-mongoose
-  .connect(process.env.ATLAS_URI || 5000, {
+require("dotenv").config();
+const mongouri = process.env.ATLAS_URI;
+console.log("uri", mongouri);
+const port = mongoose
+  .connect(mongouri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
