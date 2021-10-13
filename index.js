@@ -16,7 +16,8 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cors({ origin: true }));
 
-//rutes
+//Rutes
+app.use("/person", require("./src/routes/personRoute"));
 
 //start server
 app.listen(port, () => {
