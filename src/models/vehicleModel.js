@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const vehicleSchema = new Schema({
   plate: {
-    type: string,
+    type: String,
     required: true,
     unique: true,
   },
@@ -12,3 +12,6 @@ const vehicleSchema = new Schema({
   },
   personId: { type: Schema.ObjectId, ref: "Person" },
 });
+
+const Vehicle = model("Vehicle", vehicleSchema);
+module.exports = Person;

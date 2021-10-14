@@ -18,7 +18,7 @@ app.use(cors({ origin: true }));
 
 //Rutes
 app.use("/person", require("./src/routes/personRoute"));
-
+app.use("/user", require("./src/routes/userRoutes"));
 //start server
 app.listen(port, () => {
   console.log("Listen in the port ", port);
