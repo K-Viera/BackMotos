@@ -20,6 +20,12 @@ const personSchema = new Schema({
   secondaryLastName: {
     type: String,
   },
+  vehicles: [
+    {
+      type: Schema.ObjectId,
+      ref: "Vehicle",
+    },
+  ],
 });
 
 const Person = model("Person", personSchema);

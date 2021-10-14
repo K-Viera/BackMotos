@@ -10,7 +10,6 @@ const vehicleSchema = new Schema({
     type: String,
     required: true,
   },
-  person: { type: Schema.ObjectId, ref: "Person" },
 });
 
 const Vehicle = model("Vehicle", vehicleSchema);

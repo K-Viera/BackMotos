@@ -8,7 +8,6 @@ route.all("/", function (req, res, next) {
   next();
 });
 
-route.get("/", vehicleController.getVehicles);
 route.post("/changeVehicle", vehicleController.modifyVehicle);
 
 module.exports = route;

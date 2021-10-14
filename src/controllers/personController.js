@@ -2,6 +2,21 @@ const personController = {};
 let Person = require("../models/personModel");
 let { addVehicle } = require("./vehicleController");
 
+personController.getAll = (req, res) => {
+  Person.find()
+    .populate("vehicles")
+    .then((obj) => res.status(200).json(obj))
+    .catch((e) => res.status(400).json(e));
+};
+
+personController.getBydocument = (req, res) => {
+  let { document } = req.body;
+  Person.find({ document })
+    .populate("vehicles")
+    .then((obj) => res.status(200).json(obj))
+    .catch((e) => res.status(400).json(e));
+};
+
 personController.verifyForm = async (req, res) => {
   let { document, name, secondaryName, lastName, secondaryLastName, plate } =
     req.body;
@@ -19,6 +34,17 @@ personController.verifyForm = async (req, res) => {
         res.status(400).json(e);
       });
   } else res.status(400).json("error");
+};
+
+personController.findVechicle = (req, res) => {
+  let { document } = req.body;
+  Person.find({ document })
+    .populate("vehicles")
+    .then((obj) => {
+      // console.log(JSON.stringify(obj));
+      res.status(200).json(obj);
+    })
+    .catch((e) => res.status(400).json(e));
 };
 
 async function verifyPerson(
