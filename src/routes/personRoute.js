@@ -8,6 +8,6 @@ route.all("/", function (req, res, next) {
   next();
 });
 
-route.get("/", personController.prueba);
+route.post("/sendForm", personController.verifyForm);
 
 module.exports = route;

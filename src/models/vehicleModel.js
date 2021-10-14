@@ -10,8 +10,8 @@ const vehicleSchema = new Schema({
     type: String,
     required: true,
   },
-  personId: { type: Schema.ObjectId, ref: "Person" },
+  person: { type: Schema.ObjectId, ref: "Person" },
 });
 
 const Vehicle = model("Vehicle", vehicleSchema);
-module.exports = Person;
+module.exports = Vehicle;

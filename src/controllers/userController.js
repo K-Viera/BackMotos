@@ -1,6 +1,7 @@
 const userController = {};
 let User = require("../models/userModel");
 
+
 userController.signIn = (req, res) => {
   const { email, password } = req.body;
   const newUser = new User({
