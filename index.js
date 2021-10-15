@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const app = express();
 cors = require("cors");
 const bodyparser = require("body-parser");
-require("dotenv").config();
+// require("dotenv").config();
 require("./src/dbConnection");
 
 const port = process.env.PORT || 5000;
