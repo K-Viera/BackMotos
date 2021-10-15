@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 // require("dotenv").config();
 const mongouri =
-  "mongodb+srv://user:user@cluster0.eildf.mongodb.net/motos?retryWrites=true&w=majority";
+  "mongodb+srv://motos:motos@cluster0.aqf8e.mongodb.net/motosdb?retryWrites=true&w=majority";
 
 mongoose
   .connect(mongouri, {
