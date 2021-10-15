@@ -23,5 +23,5 @@ app.use("/vehicle", require("./src/routes/vehicleRoute"));
 
 //start server
 app.listen(port, () => {
-  console.log("Listen in the port ", port);
+  console.log("Listen in  the port ", port);
 });
