@@ -33,7 +33,7 @@ personController.verifyForm = async (req, res) => {
       .catch((e) => {
         res.status(400).json(e);
       });
-  } else res.status(400).json("error");
+  } else res.status(400).json("error al crear una persona");
 };
 
 personController.findVechicle = (req, res) => {

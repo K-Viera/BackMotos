@@ -5,25 +5,29 @@ let Vehicle = require("../models/vehicleModel");
 //   let vehicles = Vehicle.find().populate("personId");
 // };
 
-
 vehicleController.addVehicle = async (plate, person) => {
   return new Promise(async (resolve, reject) => {
-    const newVehicle = new Vehicle({
-      plate,
-      state: "Revision",
-    });
-    await newVehicle
-      .save()
-      .then(() => {
-        person.vehicles.push(newVehicle);
-        person
-          .save()
-          .then(() => resolve("success"))
-          .catch((e) => reject(e));
-      })
-      .catch((e) => {
-        reject(e);
+    let vehicle = Vehicle.find({ plate });
+    if (vehicle == null) {
+      const newVehicle = new Vehicle({
+        plate,
+        state: "Revision",
       });
+      await newVehicle
+        .save()
+        .then(() => {
+          person.vehicles.push(newVehicle);
+          person
+            .save()
+            .then(() => resolve("success"))
+            .catch((e) => reject(e));
+        })
+        .catch((e) => {
+          reject(e);
+        });
+    } else {
+      reject("Placa de vehiculo duplicada");
+    }
   });
 };
 
