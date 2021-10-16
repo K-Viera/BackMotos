@@ -11,7 +11,7 @@ vehicleController.addVehicle = async (plate, person) => {
     if (vehicle == null) {
       const newVehicle = new Vehicle({
         plate,
-        state: "Revision",
+        state: "En Revisión",
       });
       await newVehicle
         .save()
