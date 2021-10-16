@@ -10,6 +10,6 @@ route.all("/", function (req, res, next) {
 
 route.get("/", personController.getAll);
 route.post("/sendForm", personController.verifyForm);
-route.get("/getByDocument", personController.getBydocument);
+route.post("/getByDocument", personController.getBydocument);
 
 module.exports = route;
