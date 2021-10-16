@@ -7,7 +7,7 @@ let Vehicle = require("../models/vehicleModel");
 
 vehicleController.addVehicle = async (plate, person) => {
   return new Promise(async (resolve, reject) => {
-    let vehicle = Vehicle.find({ plate });
+    let vehicle = await Vehicle.findOne({ plate });
     if (vehicle == null) {
       const newVehicle = new Vehicle({
         plate,
