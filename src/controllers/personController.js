@@ -29,7 +29,7 @@ personController.verifyForm = async (req, res) => {
   ).catch((e) => res.status(400).json(e));
   if (person) {
     await addVehicle(plate, person)
-      .then(() => res.status(200).json("ingreso correcto"))
+      .then(() => res.status(201).json("ingreso correcto"))
       .catch((e) => {
         res.status(400).json(e);
       });
