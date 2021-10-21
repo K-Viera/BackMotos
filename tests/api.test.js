@@ -1,31 +1,56 @@
 const request = require("supertest");
 const app = require("../index");
+const {
+  deletePersonByDocument,
+} = require("../src/controllers/personController");
 
 //testing get all persons
-it("respond with json containing list of users with vehicle", (done) => {
-  request(app)
-    .get("/person")
-    .set("Accept", "application/json")
-    .expect("Content-Type", /json/)
-    .expect(200, done);
-}).timeout(5000);
 
-it("try to create new findForm", (done) => {
+describe("NewPerson-NewVehicle-AllData", () => {
   const data = {
-    document: "1000",
+    document: "100000111111111",
     name: "kevin",
     secondaryName: "alejandro",
     lastName: "viera",
-    plate: "fgh233",
+    plate: "1111111111111",
   };
-  request(app)
-    .post("/person/sendForm")
-    .send(data)
-    .set("Accept", "application/json")
-    .expect("Content-Type", /json/)
-    .expect(201)
-    .end((err) => {
-      if (err) return done(err);
+
+  it("Try form", (done) => {
+    request(app)
+      .post("/person/sendForm")
+      .send(data)
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(201)
+      .end((err) => {
+        if (err) return done(err);
+        done();
+      });
+  }).timeout(10000);
+
+  it("Delete Person", (done) => {
+    deletePersonByDocument(data.document).then(() => {
       done();
     });
-}).timeout(50000);
+  });
+});
+
+describe("NewPerson-NewVehicle-NoData", () => {
+  const data2 = {
+    document: "100000111111111111111",
+    plate: "111111111111111",
+  };
+
+  it("Try form without data", (done) => {
+    request(app)
+      .post("/person/sendForm")
+      .send(data2)
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(400)
+      .end((err) => {
+        if (err) return done(err);
+        done();
+      });
+  }).timeout(10000);
+});
