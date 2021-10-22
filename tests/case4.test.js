@@ -4,7 +4,7 @@ const {
   deleteVehicleByPlate,
 } = require("../src/controllers/vehicleController");
 
-Describe("OldPerson-NewVehicle-AllData", () => {
+describe("OldPerson-NewVehicle-AllData", () => {
   const data = {
     document: "1000",
     name: "nombre1",

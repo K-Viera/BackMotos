@@ -4,7 +4,7 @@ const {
   deletePersonByDocument,
 } = require("../src/controllers/personController");
 
-Describe("NewPerson-OldVehicle", () => {
+describe("NewPerson-OldVehicle", () => {
   const data = {
     document: "12345",
     name: "nombre1",

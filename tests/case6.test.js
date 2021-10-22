@@ -1,7 +1,7 @@
 const request = require("supertest");
 const app = require("../index");
 
-Describe("OldPerson-OldVehicle-NoData", () => {
+describe("OldPerson-OldVehicle-NoData", () => {
   const data = {
     document: "1000",
     plate: "fgh233",
