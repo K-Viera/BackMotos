@@ -47,6 +47,14 @@ personController.findVechicle = (req, res) => {
     .catch((e) => res.status(400).json(e));
 };
 
+personController.deletePersonByDocument = (document) => {
+  return new Promise(async (resolve, reject) => {
+    await Person.findOneAndDelete({ document })
+      .then(() => resolve())
+      .catch((err) => reject(err));
+  });
+};
+
 async function verifyPerson(
   document,
   name,
