@@ -29,7 +29,7 @@ personController.verifyForm = async (req, res) => {
   ).catch((e) => res.status(400).json(e));
   if (person) {
     await addVehicle(plate, person)
-      .then(() => res.status(200).json("ingreso correcto"))
+      .then(() => res.status(201).json("ingreso correcto"))
       .catch((e) => {
         res.status(400).json(e);
       });
@@ -45,6 +45,14 @@ personController.findVechicle = (req, res) => {
       res.status(200).json(obj);
     })
     .catch((e) => res.status(400).json(e));
+};
+
+personController.deletePersonByDocument = (document) => {
+  return new Promise(async (resolve, reject) => {
+    await Person.findOneAndDelete({ document })
+      .then(() => resolve())
+      .catch((err) => reject(err));
+  });
 };
 
 async function verifyPerson(
