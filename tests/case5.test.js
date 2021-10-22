@@ -1,10 +1,13 @@
 const request = require("supertest");
 const app = require("../index");
+const {
+  deleteVehicleByPlate,
+} = require("../src/controllers/vehicleController");
 
 describe("OldPerson-NewVehicle-NoData", () => {
   const data = {
     document: "1000",
-    plate: "12345",
+    plate: "1234567",
   };
 
   it("Try form", (done) => {
@@ -21,7 +24,7 @@ describe("OldPerson-NewVehicle-NoData", () => {
   }).timeout(10000);
 
   it("Delete Vehicle", () => {
-    deleteVehicleByPlate(data.document).then(() => {
+    deleteVehicleByPlate(data.plate).then(() => {
       done();
     });
   });

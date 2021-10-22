@@ -10,7 +10,7 @@ describe("OldPerson-NewVehicle-AllData", () => {
     name: "nombre1",
     secondaryName: "nombre2",
     lastName: "apellido",
-    plate: "12345",
+    plate: "123456",
   };
 
   it("Try form", (done) => {
@@ -27,7 +27,7 @@ describe("OldPerson-NewVehicle-AllData", () => {
   }).timeout(10000);
 
   it("Delete Vehicle", () => {
-    deleteVehicleByPlate(data.document).then(() => {
+    deleteVehicleByPlate(data.plate).then(() => {
       done();
     });
   });

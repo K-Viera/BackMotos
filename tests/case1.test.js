@@ -36,7 +36,7 @@ describe("NewPerson-NewVehicle-AllData", () => {
   });
 
   it("Delete Vehicle", () => {
-    deleteVehicleByPlate(data.document).then(() => {
+    deleteVehicleByPlate(data.plate).then(() => {
       done();
     });
   });
