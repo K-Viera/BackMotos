@@ -3,16 +3,17 @@ const app = require("../index");
 const {
   deletePersonByDocument,
 } = require("../src/controllers/personController");
-
-//testing get all persons
+const {
+  deleteVehicleByPlate,
+} = require("../src/controllers/vehicleController");
 
 describe("NewPerson-NewVehicle-AllData", () => {
   const data = {
-    document: "100000111111111",
-    name: "kevin",
-    secondaryName: "alejandro",
-    lastName: "viera",
-    plate: "1111111111111",
+    document: "12345",
+    name: "nombre1",
+    secondaryName: "nombre2",
+    lastName: "apellido",
+    plate: "12345",
   };
 
   it("Try form", (done) => {
@@ -33,24 +34,10 @@ describe("NewPerson-NewVehicle-AllData", () => {
       done();
     });
   });
-});
 
-describe("NewPerson-NewVehicle-NoData", () => {
-  const data2 = {
-    document: "100000111111111111111",
-    plate: "111111111111111",
-  };
-
-  it("Try form without data", (done) => {
-    request(app)
-      .post("/person/sendForm")
-      .send(data2)
-      .set("Accept", "application/json")
-      .expect("Content-Type", /json/)
-      .expect(400)
-      .end((err) => {
-        if (err) return done(err);
-        done();
-      });
-  }).timeout(10000);
+  it("Delete Vehicle", () => {
+    deleteVehicleByPlate(data.document).then(() => {
+      done();
+    });
+  });
 });

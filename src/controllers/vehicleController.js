@@ -31,6 +31,14 @@ vehicleController.addVehicle = async (plate, person) => {
   });
 };
 
+vehicleController.deleteVehicleByPlate = (plate) => {
+  return new Promise(async (resolve, reject) => {
+    Vehicle.findOneAndDelete({ plate })
+      .then(() => resolve())
+      .catch((err) => reject(err));
+  });
+};
+
 vehicleController.getVehicles = (req, res) => {
   Vehicle.find()
     .populate("person")
