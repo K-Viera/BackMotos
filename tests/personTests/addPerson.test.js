@@ -11,6 +11,7 @@ describe("Post Person", () => {
     secondaryName: "nombre2",
     lastName: "apellido",
   };
+
   it("New Person", (done) => {
     request(app)
       .post("/person")
@@ -36,6 +37,7 @@ describe("Post Person", () => {
         done();
       });
   }).timeout(10000);
+
   it("Delete Person", (done) => {
     deletePersonByDocument(data.document).then(() => {
       done();
