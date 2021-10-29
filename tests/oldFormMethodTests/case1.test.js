@@ -1,11 +1,11 @@
 const request = require("supertest");
-const app = require("../index");
+const app = require("../../index");
 const {
   deletePersonByDocument,
-} = require("../src/controllers/personController");
+} = require("../../src/controllers/personController");
 const {
   deleteVehicleByPlate,
-} = require("../src/controllers/vehicleController");
+} = require("../../src/controllers/vehicleController");
 
 describe("NewPerson-NewVehicle-AllData", () => {
   const data = {

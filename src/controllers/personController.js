@@ -55,6 +55,13 @@ personController.deletePersonByDocument = (document) => {
   });
 };
 
+personController.addPerson = async (req, res) => {
+  let { document, name, secondaryName, lastName, secondaryLastName } = req.body;
+  await addUser(document, name, secondaryName, lastName, secondaryLastName)
+    .then(() => res.status(200).json("usuario creado correctamente"))
+    .catch((e) => res.status(400).json(e));
+};
+
 async function verifyPerson(
   document,
   name,
@@ -89,21 +96,26 @@ async function addUser(
   secondaryLastName
 ) {
   return new Promise(async (resolve, reject) => {
-    const newPerson = new Person({
-      document,
-      name,
-      secondaryName,
-      lastName,
-      secondaryLastName,
-    });
-    await newPerson
-      .save()
-      .then(() => {
-        resolve(newPerson);
-      })
-      .catch((e) => {
-        reject(e);
+    let person = await Person.findOne({ document });
+    if (person == null) {
+      const newPerson = new Person({
+        document,
+        name,
+        secondaryName,
+        lastName,
+        secondaryLastName,
       });
+      await newPerson
+        .save()
+        .then(() => {
+          resolve(newPerson);
+        })
+        .catch((e) => {
+          reject(e);
+        });
+    } else {
+      reject("Documento Registrado Anteriormente");
+    }
   });
 }
 
