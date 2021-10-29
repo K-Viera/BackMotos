@@ -62,6 +62,11 @@ personController.addPerson = async (req, res) => {
     .catch((e) => res.status(400).json(e));
 };
 
+personController.findPerson = async (document) => {
+  let person = await Person.findOne({ document });
+  return person;
+};
+
 async function verifyPerson(
   document,
   name,

@@ -1,5 +1,6 @@
 const vehicleController = {};
 let Vehicle = require("../models/vehicleModel");
+let { findPerson } = require("../models/personModel");
 
 // vehicleController.getAll = (req, res) => {
 //   let vehicles = Vehicle.find().populate("personId");
@@ -29,6 +30,37 @@ vehicleController.addVehicle = async (plate, person) => {
       reject("Placa de vehiculo duplicada");
     }
   });
+};
+
+vehicleController.postAddVehicle = async (req, res) => {
+  let { document, plate } = req.body;
+  let person = await findPerson(document);
+  console.log("person", person);
+  if (person != null) {
+    let vehicle = await Vehicle.findOne({ plate });
+    if (vehicle == null) {
+      const newVehicle = new Vehicle({
+        plate,
+        state: "En Revisión",
+      });
+      await newVehicle
+        .save()
+        .then(() => {
+          person.vehicles.push(newVehicle);
+          person
+            .save()
+            .then(() => res.status(200).json("Usuario creado correctamente"))
+            .catch((e) => res.status(400).json(e));
+        })
+        .catch((e) => {
+          res.status(400).json(e);
+        });
+    } else {
+      res.status(400).json("placa duplicada");
+    }
+  } else {
+    res.status(400).json("La persona no se encuentra registrada");
+  }
 };
 
 vehicleController.deleteVehicleByPlate = (plate) => {
