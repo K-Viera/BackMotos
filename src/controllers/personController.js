@@ -97,7 +97,6 @@ async function addUser(
 ) {
   return new Promise(async (resolve, reject) => {
     let person = await Person.findOne({ document });
-    console.log(person);
     if (person == null) {
       const newPerson = new Person({
         document,
