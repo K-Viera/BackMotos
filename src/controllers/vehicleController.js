@@ -1,6 +1,6 @@
 const vehicleController = {};
 let Vehicle = require("../models/vehicleModel");
-let { findPerson } = require("./personController");
+let Person = require("../models/personModel");
 
 // vehicleController.getAll = (req, res) => {
 //   let vehicles = Vehicle.find().populate("personId");
@@ -34,7 +34,7 @@ let { findPerson } = require("./personController");
 
 vehicleController.postAddVehicle = async (req, res) => {
   let { document, plate } = req.body;
-  let person = await findPerson(document);
+  let person = await Person.findOne({ document });
   console.log("person", person);
   if (person != null) {
     let vehicle = await Vehicle.findOne({ plate });
