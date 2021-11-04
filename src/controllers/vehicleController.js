@@ -34,6 +34,7 @@ let Person = require("../models/personModel");
 
 vehicleController.postAddVehicle = async (req, res) => {
   let { document, plate } = req.body;
+  console.log("document:", document);
   let person = await Person.findOne({ document });
   console.log("person", person);
   if (person != null) {
