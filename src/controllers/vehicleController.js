@@ -6,31 +6,31 @@ let { findPerson } = require("./personController");
 //   let vehicles = Vehicle.find().populate("personId");
 // };
 
-vehicleController.addVehicle = async (plate, person) => {
-  return new Promise(async (resolve, reject) => {
-    let vehicle = await Vehicle.findOne({ plate });
-    if (vehicle == null) {
-      const newVehicle = new Vehicle({
-        plate,
-        state: "En Revisión",
-      });
-      await newVehicle
-        .save()
-        .then(() => {
-          person.vehicles.push(newVehicle);
-          person
-            .save()
-            .then(() => resolve("success"))
-            .catch((e) => reject(e));
-        })
-        .catch((e) => {
-          reject(e);
-        });
-    } else {
-      reject("Placa de vehiculo duplicada");
-    }
-  });
-};
+// vehicleController.addVehicle = async (plate, person) => {
+//   return new Promise(async (resolve, reject) => {
+//     let vehicle = await Vehicle.findOne({ plate });
+//     if (vehicle == null) {
+//       const newVehicle = new Vehicle({
+//         plate,
+//         state: "En Revisión",
+//       });
+//       await newVehicle
+//         .save()
+//         .then(() => {
+//           person.vehicles.push(newVehicle);
+//           person
+//             .save()
+//             .then(() => resolve("success"))
+//             .catch((e) => reject(e));
+//         })
+//         .catch((e) => {
+//           reject(e);
+//         });
+//     } else {
+//       reject("Placa de vehiculo duplicada");
+//     }
+//   });
+// };
 
 vehicleController.postAddVehicle = async (req, res) => {
   let { document, plate } = req.body;

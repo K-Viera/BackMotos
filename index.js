@@ -6,7 +6,7 @@ const bodyparser = require("body-parser");
 // require("dotenv").config();
 require("./src/dbConnection");
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.set("port", port);
 

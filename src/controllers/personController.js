@@ -1,6 +1,5 @@
 const personController = {};
 let Person = require("../models/personModel");
-let { addVehicle } = require("./vehicleController");
 
 personController.getAll = (req, res) => {
   Person.find()
