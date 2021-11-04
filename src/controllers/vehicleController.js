@@ -45,9 +45,9 @@ vehicleController.postAddVehicle = async (req, res) => {
       });
       await newVehicle
         .save()
-        .then(() => {
+        .then(async () => {
           person.vehicles.push(newVehicle);
-          person
+          await person
             .save()
             .then(() => res.status(200).json("Usuario creado correctamente"))
             .catch((e) => res.status(400).json(e));
