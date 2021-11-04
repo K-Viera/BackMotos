@@ -1,6 +1,6 @@
 const vehicleController = {};
 let Vehicle = require("../models/vehicleModel");
-let { findPerson } = require("../models/personModel");
+let { findPerson } = require("../models/personController");
 
 // vehicleController.getAll = (req, res) => {
 //   let vehicles = Vehicle.find().populate("personId");
