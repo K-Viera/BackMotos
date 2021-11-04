@@ -9,5 +9,5 @@ route.all("/", function (req, res, next) {
 });
 
 route.post("/changeVehicle", vehicleController.modifyVehicle);
-
+route.post("/", vehicleController.postAddVehicle);
 module.exports = route;
