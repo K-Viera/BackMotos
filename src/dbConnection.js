@@ -9,6 +9,6 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log("connected to db"))
-  .catch((error) => console.log(error));
+  .catch((error) => console.log("aaaaaaaaaaaaaa"));
 
 module.exports = mongoose;

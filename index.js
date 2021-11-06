@@ -17,7 +17,7 @@ app.use(bodyparser.json());
 app.use(cors({ origin: true }));
 
 //Rutes
-app.use("/person", require("./src/routes/personRoute"));
+app.use("/person2", require("./src/routes/personRoute"));
 app.use("/user", require("./src/routes/userRoutes"));
 app.use("/vehicle", require("./src/routes/vehicleRoute"));
 
